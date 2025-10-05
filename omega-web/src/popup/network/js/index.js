@@ -1,4 +1,4 @@
-import { waitTimeout, escapeHTML, copyToClipoard } from './utils.js'
+import { waitTimeout, safeTexts, copyToClipoard } from './utils.js'
 import { initTabsSelector } from './tab.js'
 import { initUrlCellDetail } from './url.js'
 import Toastify from "../../../lib/zero-dependencies/toastify/toastify-es.js";
@@ -307,7 +307,7 @@ const createTabulator = () => {
           }
         },
         formatter: (cell)=>{
-          return `<span class="glyphicon glyphicon-duplicate copy-btn" aria-hidden="true"></span><span>${escapeHTML(decodeURI(cell.getValue()))}</span>`
+          return `<span class="glyphicon glyphicon-duplicate copy-btn" aria-hidden="true"></span><span>${safeTexts(decodeURI(cell.getValue()))}</span>`
         },
         cellClick: (e, cell)=>{
           if (e && e.target) {

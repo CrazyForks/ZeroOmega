@@ -1,4 +1,4 @@
-import { escapeHTML } from './utils.js'
+import { safeTexts } from './utils.js'
 
 let tabInfo = {}
 let selfTabId = null;
@@ -59,7 +59,7 @@ const updateTabSelectorOptions = (selectedKey)=>{
     }
     Object.values(tabInfo).forEach((_tab)=>{
       const selected = _tab.id == selectedKey ? 'selected' : ''
-      optionHtmls.push(`<option value="${_tab.id}" ${selected}>(${_tab.id})${escapeHTML(_tab.title)}</option>`)
+      optionHtmls.push(`<option value="${_tab.id}" ${selected}>(${_tab.id})${safeTexts(_tab.title)}</option>`)
     })
     selectorEl.innerHTML = optionHtmls.join('');
     upateSelectedTabInfo(selectorEl);

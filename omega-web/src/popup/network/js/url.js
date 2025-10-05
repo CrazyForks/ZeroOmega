@@ -1,4 +1,4 @@
-import { escapeHTML, tr, compareProfile, getProfileIcon } from "./utils.js";
+import { safeTexts, tr, compareProfile, getProfileIcon } from "./utils.js";
 import Toastify from "../../../lib/zero-dependencies/toastify/toastify-es.js";
 
 const updateMainBtn = (mainBtnEl, profile, profiles)=>{
@@ -23,7 +23,7 @@ const updateMainBtn = (mainBtnEl, profile, profiles)=>{
       <span class="glyphicon ${iconClass}" style="color: ${targetProfile.color};">
       </span>
     </span>
-    <span>${escapeHTML(text)}</span>
+    <span>${safeTexts(text)}</span>
     <span class="caret"></span>
   `
 }
@@ -55,7 +55,7 @@ function createMenuItemForProfile(profile, profiles) {
   profileDisp.innerHTML = `
       <a href="#" role="button">
         <span class="glyphicon ${iconClass}" style="color: ${targetProfile.color};"></span>
-        <span class="om-profile-name">${escapeHTML(text)}</span>
+        <span class="om-profile-name">${safeTexts(text)}</span>
       </a>
   `
   return profileDisp;
@@ -198,7 +198,7 @@ export const initUrlCellDetail = async (cell) => {
   let headerTitle = tr('popup_addCondition')
   if (currentProfileCanAddRule){
     const profileUrl = chrome.runtime.getURL('options.html') + '#!/profile/' + encodeURIComponent(currentProfileName)
-    const profileLink = `<a href="${profileUrl}" target="_blank">${escapeHTML(currentProfileName)}</a>`
+    const profileLink = `<a href="${profileUrl}" target="_blank">${safeTexts(currentProfileName)}</a>`
     headerTitle = `${tr('popup_addConditionTo')} (${profileLink})`
   }
   const shortTitle = request.actionProfile?.shortTitle || currentProfileName || '';
@@ -206,7 +206,7 @@ export const initUrlCellDetail = async (cell) => {
   <div class="url-details-container">
     <div class="header">
       <h3>
-        ${escapeHTML(shortTitle)}
+        ${safeTexts(shortTitle)}
       </h3>
     </div>
     <div class="content">
