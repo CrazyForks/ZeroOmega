@@ -20,12 +20,12 @@ export const waitTimeout = function(maxTimeout=3000){
 
 export const safeTexts = (str)=> {
   return str
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;") //&#39; 或 &apos;
-    .replace(/\//g, "&#47;")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;") //&#39; 或 &apos;
+    .replace(/\//g, "&#47;");
 }
 
 export const copyToClipoard = (data, opts)=>{
