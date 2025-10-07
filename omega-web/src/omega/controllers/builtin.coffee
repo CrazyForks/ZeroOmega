@@ -35,5 +35,6 @@ angular.module('omega').controller 'BuiltinCtrl', ($scope, $stateParams,
     showInitial: true
     showInput: true
     showPalette: true
+    showAlpha: true
     showSelectionPalette: true
     maxSelectionSize: 5

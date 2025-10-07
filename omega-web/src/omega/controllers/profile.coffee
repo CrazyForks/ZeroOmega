@@ -16,6 +16,7 @@ angular.module('omega').controller 'ProfileCtrl', ($scope, $stateParams,
     showInitial: true
     showInput: true
     showPalette: true
+    showAlpha: true
     showSelectionPalette: true
     maxSelectionSize: 5
 
